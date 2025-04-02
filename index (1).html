@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musisi Indonesia Beraksi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .container h2 {
+            font-size: 2rem;
+            color: #e60000;
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            width: 100%;
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        button {
+            background: #e60000;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #cc0000;
+        }
+
+        .cta-button {
+            padding: 12px 25px;
+            background-color: #e60000;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #cc0000;
+        }
+
+        .about-content, .form-container {
+            text-align: left;
+        }
+
+        .form-container input, .form-container select {
+            margin-bottom: 10px;
+        }
+
+        .video-gallery, .photo-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .gallery-item {
+            width: 30%;
+            margin: 10px;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+        }
+        
+        .comment-section input {
+            width: 70%;
+            padding: 8px;
+            margin-right: 5px;
+        }
+
+        .comment-section button {
+            padding: 8px 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Musisi Indonesia Beraksi</h1>
+    </header>
+
+    <!-- Halaman Registrasi Musisi & Pemilik -->
+    <div class="container">
+        <h2>Registrasi Musisi & Pemilik</h2>
+        <div>
+            <button onclick="showForm('musisi')">Registrasi Musisi</button>
+            <button onclick="showForm('owner')">Registrasi Pemilik</button>
+        </div>
+
+        <!-- Form Registrasi Musisi -->
+        <div id="register-musisi" class="form-container" style="display: none;">
+            <h3>Registrasi Musisi</h3>
+            <input type="text" id="nama-musisi" placeholder="Nama Lengkap Musisi">
+            <input type="text" id="wa-musisi" placeholder="Nomor WhatsApp">
+            <input type="text" id="instagram-musisi" placeholder="Username Instagram">
+            <input type="email" id="email-musisi" placeholder="Email Musisi">
+            <input type="password" id="password-musisi" placeholder="Password">
+            <select id="genre-musisi">
+                <option>Pilih Genre Musik</option>
+                <option>Pop</option>
+                <option>Rock</option>
+                <option>Jazz</option>
+                <option>Dangdut</option>
+                <option>Blues</option>
+                <option>Funk</option>
+                <option>Metal</option>
+                <option>DJ</option>
+                <option>All Genre</option>
+            </select>
+            <button onclick="registerMusisi()">Daftar Musisi</button>
+        </div>
+
+        <!-- Form Registrasi Pemilik -->
+        <div id="register-owner" class="form-container" style="display: none;">
+            <h3>Registrasi Pemilik</h3>
+            <input type="text" id="nama-owner" placeholder="Nama Pemilik Usaha">
+            <input type="text" id="nama-usaha" placeholder="Nama Usaha (Kafe, Restoran, Hotel, dll)">
+            <input type="text" id="alamat-usaha" placeholder="Alamat Usaha">
+            <input type="email" id="email-owner" placeholder="Email Pemilik">
+            <input type="password" id="password-owner" placeholder="Password">
+            <select id="jenis-usaha">
+                <option>Pilih Jenis Usaha</option>
+                <option>Kafe</option>
+                <option>Restoran</option>
+                <option>Hotel</option>
+                <option>Wedding</option>
+                <option>Perusahaan</option>
+            </select>
+            <button onclick="registerOwner()">Daftar Pemilik</button>
+        </div>
+    </div>
+
+    <!-- Halaman Tentang Kami -->
+    <div class="container about-content">
+        <h2>Tentang Kami</h2>
+        <p><strong>Musisi Indonesia Beraksi</strong> adalah rumah bagi band-band berbakat dari seluruh Indonesia yang siap menghidupkan acara Anda! Dengan berbagai genre musik mulai dari Pop, Rock, Jazz, Dangdut, hingga genre yang lebih spesifik seperti Blues, Funk, Metal, dan DJ, kami menyediakan pilihan terbaik untuk segala jenis acara.</p>
+        <ul>
+            <li><strong>Keahlian & Pengalaman:</strong> Musisi profesional siap tampil di berbagai acara.</li>
+            <li><strong>Kualitas Musik Terjamin:</strong> Band kami memberikan penampilan berkualitas tinggi.</li>
+            <li><strong>Fleksibilitas & Penyesuaian:</strong> Menyesuaikan penampilan dengan acara Anda.</li>
+            <li><strong>Harga yang Bersahabat:</strong> Harga fleksibel sesuai anggaran Anda.</li>
+        </ul>
+        <a href="#" class="cta-button">Hubungi Kami Hari Ini!</a>
+    </div>
+
+    <!-- Galeri Foto & Video -->
+    <div class="container">
+        <h2>Galeri</h2>
+
+        <div class="video-gallery">
+            <div class="gallery-item">
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Video Band 1</p>
+            </div>
+            <div class="gallery-item">
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Video Band 2</p>
+            </div>
+        </div>
+
+        <div class="photo-gallery">
+            <div class="gallery-item">
+                <img src="foto1.jpg" alt="Band Foto 1" width="100%">
+                <p>Foto Band 1</p>
+            </div>
+            <div class="gallery-item">
+                <img src="foto2.jpg" alt="Band Foto 2" width="100%">
+                <p>Foto Band 2</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Komentar -->
+    <div class="comment-section container">
+        <h3>Komentar dan Suka</h3>
+        <input type="text" id="comment" placeholder="Tulis komentar...">
+        <button onclick="submitComment()">Kirim Komentar</button>
+    </div>
+
+    <script>
+        function showForm(formType) {
+            if (formType === 'musisi') {
+                document.getElementById("register-musisi").style.display = 'block';
+                document.getElementById("register-owner").style.display = 'none';
+            } else {
+                document.getElementById("register-musisi").style.display = 'none';
+                document.getElementById("register-owner").style.display = 'block';
+            }
+        }
+
+        function registerMusisi() {
+            const namaMusisi = document.getElementById("nama-musisi").value;
+            const waMusisi = document.getElementById("wa-musisi").value;
+            const instagramMusisi = document.getElementById("instagram-musisi").value;
+            const emailMusisi = document.getElementById("email-musisi").value;
+            const passwordMusisi = document.getElementById("password-musisi").value;
+            const genreMusisi = document.getElementById("genre-musisi").value;
+            console.log("Musisi Terdaftar:", { namaMusisi, waMusisi, instagramMusisi, emailMusisi, passwordMusisi, genreMusisi });
+        }
+
+        function registerOwner() {
+            const namaOwner = document.getElementById("nama-owner").value;
+            const namaUsaha = document.getElementById("nama-usaha").value;
+            const alamatUsaha = document.getElementById("alamat-usaha").value;
+            const emailOwner = document.getElementById("email-owner").value;
+            const passwordOwner = document.getElementById("password-owner").value;
+            const jenisUsaha = document.getElementById("jenis-usaha").value;
+            console.log("Pemilik Terdaftar:", { namaOwner, namaUsaha, alamatUsaha, emailOwner, passwordOwner, jenisUsaha });
+        }
+
+        function submitComment() {
+            const comment = document.getElementById("comment").value;
+            console.log("Komentar Dikirim:", comment);
+        }
+    </script>
+
+</body>
+</html>
